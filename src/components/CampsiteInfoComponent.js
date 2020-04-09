@@ -1,16 +1,9 @@
-import { Row } from "reactstrap";
-import React, { Component } from 'react';
+import React from 'react';
 import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle} from 'reactstrap';
 
-class CampsiteInfo extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            selectedCampsite: this.props.campsite
-        };
-    }
 
-    renderCampsite(campsite) {
+
+    function RenderCampsite({campsite}) {
         if (campsite) {
             return (
                 <div className="col-md-5 m-1">
@@ -28,7 +21,7 @@ class CampsiteInfo extends Component {
         return <div />
     }
 
-    renderComments(comments){
+    function RenderComments({comments}){
         if (comments) {
             return (
                 <div className="col-md-5 m-1" >
@@ -46,36 +39,18 @@ class CampsiteInfo extends Component {
         return <div />
     }
 
-    render() {
-        const CampsiteInfo  =  this.props.campsite ;                           
-        
-        if (CampsiteInfo === null || CampsiteInfo === undefined){
-
-            return(
-                <div>
-                   
-                </div>
-            )
-        }
-        else {
-            return(
+    function CampsiteInfo(props) {
+        if (props.campsite) {
+            return (
                 <div className="container">
-                <div className="row">
-                     { this.renderCampsite(CampsiteInfo)};
-                     { this.renderComments(CampsiteInfo.comments)};
+                    <div className="row">
+                        <RenderCampsite campsite={props.campsite} />
+                        <RenderComments comments={props.campsite.comments} />
+                    </div>
                 </div>
-                </div>
-               
-                
-            )
-
+            );
         }
-
-
+        return <div />;
     }
-
-
-
-
-}
-export default CampsiteInfo;
+    
+    export default CampsiteInfo;
