@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import { PARTNERS } from "../shared/partners";
 
 function RenderPartner(props) {
-    const partner = props.partner;
+  const partner = props.partner;
   if (partner) {
     return (
       <React.Fragment>
@@ -33,10 +33,9 @@ function RenderPartner(props) {
 function About(props) {
   const partners = props.partners.map(partner => {
     return (
-        <Media tag = "li" key  = {partner.id}>
-            <RenderPartner partner ={partner}></RenderPartner>
-
-        </Media>
+      <Media tag="li" key={partner.id}>
+        <RenderPartner partner={partner}></RenderPartner>
+      </Media>
     );
   });
 
